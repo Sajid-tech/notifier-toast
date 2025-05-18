@@ -1,0 +1,116 @@
+.notifier-container {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.notifier-container.top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.notifier-container.top-center {
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.notifier-container.top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.notifier-container.bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.notifier-container.bottom-center {
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.notifier-container.bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.notifier {
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  animation: notifierSlideIn 0.2s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  pointer-events: auto;
+}
+
+.notifier.exit {
+  animation: notifierSlideOut 0.2s ease-in forwards;
+}
+
+.notifier.info {
+  background-color: #3b82f6;
+}
+
+.notifier.success {
+  background-color: #10b981;
+}
+
+.notifier.warning {
+  background-color: #f59e0b;
+}
+
+.notifier.error {
+  background-color: #ef4444;
+}
+
+.notifier-message {
+  margin-right: 0.5rem;
+}
+
+.notifier-close {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.125rem 0.25rem;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.notifier-close:hover {
+  opacity: 1;
+}
+
+@keyframes notifierSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes notifierSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

@@ -1,36 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useNotifier } from '@yourusername/notifier';
+import notifier from '../../../src/Notifier';
 import { Bell, ArrowRight, Package, Zap, Layout, Palette } from 'lucide-react';
 import CodeBlock from '../components/CodeBlock';
+import Demo from '../components/Demo';
 
 const HomePage: React.FC = () => {
-  const { success } = useNotifier();
-
   const demoNotification = () => {
-    success('Welcome to Notifier! 🎉');
+    notifier.success('Welcome to Notifier! 🎉');
   };
 
-  const installationCode = `npm install @yourusername/notifier`;
+  const installationCode = `npm install notifier`;
 
-  const usageCode = `import { NotifierProvider, Notifier, useNotifier } from '@yourusername/notifier';
+  const usageCode = `import notifier from 'notifier';
 
-// Wrap your app with NotifierProvider
-function App() {
-  return (
-    <NotifierProvider>
-      <Notifier />
-      <YourComponents />
-    </NotifierProvider>
-  );
-}
-
-// Use in your components
 function YourComponent() {
-  const { success, error, warning, info } = useNotifier();
+  const showSuccess = () => {
+    notifier.success('Operation completed successfully!');
+  };
   
   return (
-    <button onClick={() => success('Operation successful!')}>
+    <button onClick={showSuccess}>
       Show Notification
     </button>
   );
@@ -147,6 +137,10 @@ function YourComponent() {
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">2. Add to your application</h3>
               <CodeBlock code={usageCode} />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">3. Try it out</h3>
+              <Demo />
             </div>
 
             <div className="text-center mt-12">
