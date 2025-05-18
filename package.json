@@ -26,8 +26,6 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "lint": "eslint .",
     "preview": "vite preview",
-    "website": "cd website && npm run dev",
-    "build:website": "cd website && npm run build",
     "prepublishOnly": "npm run build"
   },
  
