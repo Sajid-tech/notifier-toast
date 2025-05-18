@@ -1,17 +1,18 @@
 {
-  "name": "notifier",
+  "name": "notifier-toast",
   "version": "0.1.0",
   "description": "Beautiful, customizable toast notifications for React",
-  "author": "Your Name",
+  "author": "Sajid Hussain",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
+      
     },
     "./package.json": "./package.json"
   },
@@ -61,7 +62,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/notifier.git"
+    "url": "https://github.com/Sajid-tech/notifier-toast"
   },
   "publishConfig": {
     "access": "public"
