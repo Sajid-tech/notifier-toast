@@ -13,3 +13,5 @@ export const ToastContainer: React.FC = () => {
     </div>
   );
 };
+
+export default ToastContainer
