@@ -1,17 +1,22 @@
-export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'default';
+export type Position =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 
-export interface ToastOptions {
-  type?: ToastType;
+export type NotificationType = 'info' | 'success' | 'warning' | 'error';
+
+export interface Notification {
+  id: string;
+  message: string;
+  type: NotificationType;
   duration?: number;
 }
 
-export interface ToastProps extends ToastOptions {
-  id: string;
-  message: string;
-}
-
-export interface ToastContextValue {
-  toasts: ToastProps[];
-  addToast: (message: string, options?: ToastOptions) => string;
-  removeToast: (id: string) => void;
+export interface NotifierOptions {
+  position?: Position;
+  duration?: number;
+  maxNotifications?: number;
 }

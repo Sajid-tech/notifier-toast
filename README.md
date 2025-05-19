@@ -1,84 +1,42 @@
-# React Toast Notifications
+# Notifier
 
-A lightweight, customizable toast notification library for React applications.
+A beautiful, customizable toast notification library for React.
+
+## Features
+
+-   🎨 Beautiful out-of-the-box
+-   🌓 Light & Dark mode support
+-   🔄 Multiple positions
+-   🎭 Different types (success, error, warning, info)
+-   ⌛ Custom durations
+-   🚀 Simple API
+-   🧩 TypeScript support
 
 ## Installation
 
 ```bash
-npm install @yourusername/toast-notifications
+npm install notifier
 # or
-yarn add @yourusername/toast-notifications
+yarn add notifier
 # or
-pnpm add @yourusername/toast-notifications
+pnpm add notifier
 ```
 
-## Usage
+## Quick Start
 
-1. Wrap your app with `ToastProvider`:
-
-```jsx
-import { ToastProvider } from '@yourusername/toast-notifications';
-
-function App() {
-  return (
-    <ToastProvider>
-      {/* Your app content */}
-    </ToastProvider>
-  );
-}
-```
-
-2. Add the `Toast` component where you want the notifications to appear:
-
-```jsx
-import { Toast } from '@yourusername/toast-notifications';
-
-function App() {
-  return (
-    <div>
-      <Toast />
-      {/* Your app content */}
-    </div>
-  );
-}
-```
-
-3. Use the toast functions:
-
-```jsx
-import { useToast } from '@yourusername/toast-notifications';
+```tsx
+import notifier from 'notifier';
 
 function MyComponent() {
-  const toast = useToast();
-
-  const handleClick = () => {
-    // Basic usage
-    toast.success('Operation successful!');
-
-    // With options
-    toast.error('Something went wrong', { duration: 5000 });
-
-    // Available methods
-    toast.success('Success message');
-    toast.error('Error message');
-    toast.warning('Warning message');
-    toast.info('Info message');
+  const showSuccess = () => {
+    notifier.success('Operation completed successfully!');
   };
-
+  
   return (
-    <button onClick={handleClick}>
-      Show Toast
+    <button onClick={showSuccess}>
+      Show Notification
     </button>
   );
-}
-```
-
-## Options
-
-```typescript
-interface ToastOptions {
-  type?: 'success' | 'error' | 'warning' | 'info' | 'default';
-  duration?: number; // Duration in milliseconds, default: 4000
 }
 ```
 
