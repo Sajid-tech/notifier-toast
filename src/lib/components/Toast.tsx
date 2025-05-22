@@ -74,12 +74,12 @@ export const Toast: React.FC<ToastProps> = ({
   const getToastClasses = () => {
     const baseClasses = "max-w-sm w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black/5 overflow-hidden";
     const typeClasses = {
-      success: "border-l-4 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10",
-      error: "border-l-4 border-rose-500 bg-rose-50 dark:bg-rose-900/10",
-      warning: "border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/10",
-      info: "border-l-4 border-sky-500 bg-sky-50 dark:bg-sky-900/10",
-      loading: "border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10",
-      custom: "border-l-4 border-gray-500 bg-gray-50 dark:bg-gray-900/10"
+      success: "border-l-4 border-emerald-500 bg-emerald-50 dark:bg-emerald-700/90",
+      error: "border-l-4 border-rose-500 bg-rose-50 dark:bg-rose-700/90",
+      warning: "border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-700/90",
+      info: "border-l-4 border-sky-500 bg-sky-50 dark:bg-sky-700/90",
+      loading: "border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-700/90",
+      custom: "border-l-4 border-gray-500 bg-gray-50 dark:bg-gray-700/90"
     };
     
     return `${baseClasses} ${typeClasses[type]} ${className} ${toast.visible ? 'animate-enter' : 'animate-leave'}`;
@@ -114,7 +114,7 @@ export const Toast: React.FC<ToastProps> = ({
               <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{title}</p>
             )}
             <div className={`text-sm ${title ? 'mt-1' : ''} ${
-              type === 'success' ? 'text-emerald-900 dark:text-emerald-100' :
+              type === 'success' ? 'text-emerald-900 dark:text-red-100' :
               type === 'error' ? 'text-rose-900 dark:text-rose-100' :
               type === 'warning' ? 'text-amber-900 dark:text-amber-100' :
               type === 'info' ? 'text-sky-900 dark:text-sky-100' :
@@ -143,7 +143,7 @@ export const Toast: React.FC<ToastProps> = ({
           {dismissible && (
             <button
               type="button"
-              className="flex-shrink-0 ml-4 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-shrink-0 ml-4 text-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               onClick={() => toastStore.dismissToast(id)}
               aria-label="Close"
             >
