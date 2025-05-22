@@ -1,38 +1,30 @@
 {
-  "name": "notifier-toast",
+  "name": "tinkr",
+  "private": false,
   "version": "0.1.0",
-  "description": "Beautiful, customizable toast notifications for React",
-  "author": "Sajid Hussain",
-  "license": "MIT",
+  "type": "module",
+  "description": "A lightweight, accessible toast notification library for React",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-      
-    },
-    "./package.json": "./package.json"
-  },
-   "type": "module",
   "files": [
     "dist"
   ],
-  "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "build": "tsc && vite build",
+    "build:lib": "tsup",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "prepublishOnly": "npm run build"
+    "preview": "vite preview"
   },
- 
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.344.0"
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
@@ -55,14 +47,10 @@
     "react",
     "toast",
     "notification",
-    "alert",
-    "popup"
+    "lightweight",
+    "typescript",
+    "accessible"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Sajid-tech/notifier-toast"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+  "author": "Sajid Hussain",
+  "license": "MIT"
 }
