@@ -11,8 +11,9 @@ export default defineConfig({
   external: ['react', 'react-dom'],
   treeshake: true,
   esbuildOptions(options) {
-    options.jsx = 'automatic';
-    options.jsxImportSource = 'react';
+    options.jsx = 'transform';
+    options.jsxFactory = 'React.createElement';
+    options.jsxFragment = 'React.Fragment';
     options.banner = {
       js: '/**\n * Tinkr - A lightweight, accessible toast notification library for React\n * @license MIT\n */',
     };
