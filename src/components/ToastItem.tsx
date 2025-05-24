@@ -12,7 +12,7 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onClose }) => {
   const timerRef = useRef<number | undefined>();
 
   useEffect(() => {
-    // Appear animation
+ 
     requestAnimationFrame(() => {
       setIsVisible(true);
     });
@@ -38,10 +38,10 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onClose }) => {
       if (toast.onClose) {
         toast.onClose();
       }
-    }, 300); // Wait for animation to complete
+    }, 300); 
   };
 
-  // Define icon based on toast type
+  
   const getIcon = () => {
     switch (toast.type) {
       case 'success':
@@ -57,38 +57,43 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onClose }) => {
     }
   };
 
-  // Define colors based on toast type
+ 
   const getColors = () => {
     switch (toast.type) {
       case 'success':
         return {
-          bg: 'bg-emerald-50',
-          icon: 'text-emerald-500',
-          border: 'border-emerald-500',
+          bg: 'bg-emerald-50 dark:bg-emerald-900/90',
+          text: 'text-emerald-800 dark:text-emerald-100',
+          icon: 'text-emerald-500 dark:text-emerald-400',
+          border: 'border-emerald-500 dark:border-emerald-400',
         };
       case 'error':
         return {
-          bg: 'bg-red-50',
-          icon: 'text-red-500',
-          border: 'border-red-500',
+          bg: 'bg-red-50 dark:bg-red-900/90',
+          text: 'text-red-800 dark:text-red-100',
+          icon: 'text-red-500 dark:text-red-400',
+          border: 'border-red-500 dark:border-red-400',
         };
       case 'warning':
         return {
-          bg: 'bg-amber-50',
-          icon: 'text-amber-500',
-          border: 'border-amber-500',
+          bg: 'bg-amber-50 dark:bg-amber-900/90',
+          text: 'text-amber-800 dark:text-amber-100',
+          icon: 'text-amber-500 dark:text-amber-400',
+          border: 'border-amber-500 dark:border-amber-400',
         };
       case 'info':
         return {
-          bg: 'bg-blue-50',
-          icon: 'text-blue-500',
-          border: 'border-blue-500',
+          bg: 'bg-blue-50 dark:bg-blue-900/90',
+          text: 'text-blue-800 dark:text-blue-100',
+          icon: 'text-blue-500 dark:text-blue-400',
+          border: 'border-blue-500 dark:border-blue-400',
         };
       default:
         return {
-          bg: 'bg-gray-50',
-          icon: 'text-gray-500',
-          border: 'border-gray-500',
+          bg: 'bg-gray-50 dark:bg-gray-900/50',
+          text: 'text-gray-800 dark:text-gray-100',
+          icon: 'text-gray-500 dark:text-gray-400',
+          border: 'border-gray-500 dark:border-gray-400',
         };
     }
   };
@@ -100,21 +105,47 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onClose }) => {
       role="alert"
       aria-live="assertive"
       className={`
-        ${colors.bg} border-l-4 ${colors.border} rounded-md shadow-sm py-3 px-4 pr-10 
-        flex items-start max-w-sm w-full
-        transition-all duration-300 ease-in-out
+        relative
+        ${colors.bg} 
+        border-l-4 
+        ${colors.border} 
+        rounded-lg 
+        shadow-md 
+        py-4 
+        px-6 
+        pr-12
+        flex 
+        items-start 
+        gap-3
+        min-w-[320px]
+        max-w-[420px]
+        transition-all 
+        duration-300 
+        ease-in-out
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}
       `}
     >
-      <div className={`${colors.icon} flex-shrink-0 mr-3 mt-0.5`}>
+      <div className={`${colors.icon} flex-shrink-0`}>
         {getIcon()}
       </div>
-      <div className="flex-1 text-sm text-gray-700">
+      <div className={`flex-1 ${colors.text} text-sm font-medium`}>
         {toast.message}
       </div>
       <button
         onClick={handleClose}
-        className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+        className={`
+          absolute 
+          right-2 
+          top-1/2 
+          -translate-y-1/2
+          ${colors.text}
+          opacity-60 
+          hover:opacity-100 
+          transition-opacity
+          p-1
+          rounded-full
+          hover:bg-black/5
+        `}
         aria-label="Close"
       >
         <X className="w-4 h-4" />

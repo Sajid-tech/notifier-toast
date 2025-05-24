@@ -1,7 +1,11 @@
 {
-  "name": "tinkr-react",
+  "name": "@sajid-tech/tinkr-react",
   "private": false,
-  "version": "0.1.0",
+  "publishConfig": {
+  "access": "restricted"
+},
+
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",

@@ -6,6 +6,17 @@ import { useToastContext } from './ToastContext';
 const DEFAULT_DURATION = 3000; // 3 seconds
 const DEFAULT_POSITION: ToastPosition = 'top-right';
 
+// Queue to store toasts before context is initialized
+let toastQueue: Array<{
+  type: ToastType;
+  message: ReactNode;
+  duration?: number;
+  position?: ToastPosition;
+  onClose?: () => void;
+}> = [];
+
+let isContextInitialized = false;
+
 // Function to create toast instance when outside of React component
 let addToastFn: (options: {
   type: ToastType;
@@ -13,7 +24,11 @@ let addToastFn: (options: {
   duration?: number;
   position?: ToastPosition;
   onClose?: () => void;
-}) => string = () => {
+}) => string = (options) => {
+  if (!isContextInitialized) {
+    toastQueue.push(options);
+    return 'queued';
+  }
   throw new Error('Toast context not initialized. Make sure to render the Toaster component.');
 };
 
@@ -21,8 +36,19 @@ let addToastFn: (options: {
 export const useToast = () => {
   const { addToast, removeToast, removeAllToasts } = useToastContext();
 
-  // Update the global function
-  addToastFn = addToast;
+  // Update the global function and process queued toasts
+  if (!isContextInitialized) {
+    isContextInitialized = true;
+    addToastFn = addToast;
+    
+    // Process any queued toasts
+    while (toastQueue.length > 0) {
+      const queuedToast = toastQueue.shift();
+      if (queuedToast) {
+        addToast(queuedToast);
+      }
+    }
+  }
 
   return {
     success: (message: ReactNode, options = {}) => 
@@ -77,4 +103,5 @@ export const toast = {
 // Initialize toast function
 export const setToastHandler = (handler: typeof addToastFn) => {
   addToastFn = handler;
+  isContextInitialized = true;
 };
